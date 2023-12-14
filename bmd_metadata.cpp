@@ -41,7 +41,7 @@
 //using namespace std::__fs;
 //using namespace std::filesystem;
 
-//const std::string versionString = "0.3.0dev-20231117";
+const std::string versionString = "0.1.0dev-20231214";
 
 static const int BUFSIZE = 1024;
 class CameraCodecCallback : public IBlackmagicRawCallback
@@ -456,6 +456,8 @@ std::map<std::string, std::string> read_metadata(const std::string filename)
 		std::string strValue = oss.str();
 		stringMap[kv.first] = strValue;
 	}
+
+	stringMap["version"] = versionString;
 
     return stringMap;
 }

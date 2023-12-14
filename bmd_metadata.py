@@ -226,7 +226,14 @@ class StringMap(object):
 # Register StringMap in _bmd_metadata:
 _bmd_metadata.StringMap_swigregister(StringMap)
 
-def read_metadata(filename):
+def read_metadata(filename: str) -> dict:
+    """
+    Read metadata from a Blackmagic RAW (.braw) file.
+    Args:
+        filename: The path to the file to read.
+    Returns:
+        A dictionary of metadata.
+    """
     metadata_raw = _bmd_metadata.read_metadata(filename)
     metadata = {}
     for key, value in metadata_raw.items():
