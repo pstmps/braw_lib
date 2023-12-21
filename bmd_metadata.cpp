@@ -34,14 +34,14 @@
 #include <fstream>
 #include <map>
 #include <sstream>
-#include <boost/dll/runtime_symbol_info.hpp>
+//#include <boost/dll/runtime_symbol_info.hpp>
 
 #include "bmd_metadata.h"
 
 //using namespace std::__fs;
 //using namespace std::filesystem;
 
-const std::string versionString = "0.1.0dev-20231214";
+const std::string versionString = "0.2.0dev-20231221";
 
 static const int BUFSIZE = 1024;
 class CameraCodecCallback : public IBlackmagicRawCallback
@@ -438,9 +438,11 @@ std::map<std::string, Variant> ProcessClip(CFStringRef clipName, CFStringRef bin
 
 }
 
-std::map<std::string, std::string> read_metadata(const std::string filename)
+std::map<std::string, std::string> read_metadata(const std::string filename, const std::string binaryDirectory)
 {
-    std::string binaryDirectory = (boost::dll::this_line_location().parent_path() / "Libraries").string();
+    // std::string binaryDirectory = (boost::dll::this_line_location().parent_path() / "Libraries").string();
+
+	// std::cout << "binaryDirectory: " << binaryDirectory << "\n";
 
     CFStringRef binaryDirectoryCFStr = CFStringCreateWithCString(NULL, binaryDirectory.c_str(), kCFStringEncodingUTF8);
 

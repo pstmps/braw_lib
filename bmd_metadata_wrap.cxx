@@ -7523,11 +7523,11 @@ SWIGINTERN PyObject *StringMap_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
 SWIGINTERN PyObject *_wrap_read_metadata(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string arg1 ;
-  PyObject *swig_obj[1] ;
+  std::string arg2 ;
+  PyObject *swig_obj[2] ;
   std::map< std::string,std::string,std::less< std::string >,std::allocator< std::pair< std::string const,std::string > > > result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!SWIG_Python_UnpackTuple(args, "read_metadata", 2, 2, swig_obj)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
     int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
@@ -7537,7 +7537,16 @@ SWIGINTERN PyObject *_wrap_read_metadata(PyObject *self, PyObject *args) {
     arg1 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  result = read_metadata(SWIG_STD_MOVE(arg1));
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "read_metadata" "', argument " "2"" of type '" "std::string const""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = read_metadata(SWIG_STD_MOVE(arg1),SWIG_STD_MOVE(arg2));
   resultobj = swig::from(static_cast< std::map< std::string,std::string,std::less< std::string >,std::allocator< std::pair< std::string const,std::string > > > >(result));
   return resultobj;
 fail:
@@ -7597,7 +7606,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_StringMap", _wrap_delete_StringMap, METH_O, NULL},
 	 { "StringMap_swigregister", StringMap_swigregister, METH_O, NULL},
 	 { "StringMap_swiginit", StringMap_swiginit, METH_VARARGS, NULL},
-	 { "read_metadata", _wrap_read_metadata, METH_O, NULL},
+	 { "read_metadata", _wrap_read_metadata, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
